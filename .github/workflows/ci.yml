@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: DevOps CI Pipeline
 
 on:
   push:
@@ -10,16 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Display Files
-      run: |
-        echo "Listing project files..."
-        ls -la
+      - name: Display Files
+        run: ls -la
 
-    - name: Simulate Build
-      run: echo "Build Successful!"
+      - name: Build Step
+        run: echo "Build successful"
 
-    - name: Simulate Test
-      run: echo "All Tests Passed!"
+      - name: Slack Notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"🚀 CI Pipeline completed successfully for DevOps Web App!"}' \
+          ${{ secrets.SLACK_WEBHOOK }}
