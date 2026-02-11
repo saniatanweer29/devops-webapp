@@ -1,0 +1,25 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Display Files
+      run: |
+        echo "Listing project files..."
+        ls -la
+
+    - name: Simulate Build
+      run: echo "Build Successful!"
+
+    - name: Simulate Test
+      run: echo "All Tests Passed!"
